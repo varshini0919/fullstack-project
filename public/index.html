@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Auth Section -->
+    <div id="auth-section" class="container">
+        <h2>Team Task Manager</h2>
+        <div class="card">
+            <h3 id="auth-title">Login</h3>
+            <form id="auth-form">
+                <input type="text" id="name" placeholder="Full Name" style="display:none;">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <select id="role" style="display:none;">
+                    <option value="Member">Member</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <p id="toggle-auth">Need an account? <span onclick="toggleAuthMode()">Register here</span></p>
+            <div id="auth-error" class="error"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard-section" class="container" style="display:none;">
+        <header>
+            <h2>Task Dashboard</h2>
+            <div>
+                <span id="user-info"></span>
+                <button onclick="logout()" class="btn btn-outline">Logout</button>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">Total Tasks <br><span id="stat-total">0</span></div>
+            <div class="stat-card">Pending <br><span id="stat-pending">0</span></div>
+            <div class="stat-card">Completed <br><span id="stat-completed">0</span></div>
+        </div>
+
+        <div id="admin-controls" style="display:none;" class="card mt-2">
+            <h3>Create New Task</h3>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <input type="text" id="task-desc" placeholder="Description">
+                <select id="task-assignee" required>
+                    <option value="">Select Assignee</option>
+                </select>
+                <button type="submit" class="btn">Create Task</button>
+                <div id="task-msg"></div>
+            </form>
+        </div>
+
+        <div class="tasks-container mt-2">
+            <h3>Your Tasks</h3>
+            <div id="task-list"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
