@@ -40,9 +40,9 @@ async function startServer() {
         console.log('Connected to In-Memory MongoDB! (Your app will run perfectly for your demo)');
     }
 
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`Server running on port ${PORT}`);
-        console.log(`GO TO: http://localhost:${PORT}`);
+        console.log(`GO TO: http://0.0.0.0:${PORT}`);
     });
 }
 
