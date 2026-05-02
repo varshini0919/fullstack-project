@@ -33,6 +33,9 @@ async function startServer() {
         const mongoServer = await MongoMemoryServer.create({
             instance: {
                 startupTimeout: 60000 // 60 seconds
+            },
+            binary: {
+                version: '7.0.14' // Ensure a version supported by Debian 12+
             }
         });
         const mongoUri = mongoServer.getUri();
