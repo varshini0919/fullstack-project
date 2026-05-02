@@ -22,7 +22,8 @@ router.post('/register', async (req, res) => {
             res.json({ token, user: { id: user.id, name: user.name, role: user.role } });
         });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
@@ -42,7 +43,8 @@ router.post('/login', async (req, res) => {
             res.json({ token, user: { id: user.id, name: user.name, role: user.role } });
         });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
@@ -52,7 +54,8 @@ router.get('/users', async (req, res) => {
         const users = await User.find().select('-password');
         res.json(users);
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 

@@ -16,7 +16,8 @@ router.get('/dashboard', auth, async (req, res) => {
 
         res.json({ total, completed, pending });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
@@ -31,7 +32,8 @@ router.get('/', auth, async (req, res) => {
         const tasks = await Task.find(query).populate('assignedTo', 'name email').sort({ createdAt: -1 });
         res.json(tasks);
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
@@ -51,7 +53,8 @@ router.post('/', auth, async (req, res) => {
         await task.save();
         res.json(task);
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
@@ -70,7 +73,8 @@ router.put('/:id', auth, async (req, res) => {
         await task.save();
         res.json(task);
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
     }
 });
 
